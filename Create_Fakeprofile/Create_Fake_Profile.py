@@ -1,5 +1,5 @@
 from faker import Faker
-fake = Faker(['en_IN', 'en_US', 'fr_FR'])
+fake = Faker(['en_IN', 'en_US', 'fr_FR','en_UK'])
 print(" ALL FAKER DETAILS ")
 print(dir(fake))
 
@@ -20,7 +20,6 @@ URL : {}
             fake.email(),
             fake.ssn(),
             fake.latitude(), fake.longitude(),
-
             fake.url())
 
 print(summary)
