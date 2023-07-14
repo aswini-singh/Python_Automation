@@ -1,5 +1,5 @@
 from faker import Faker
-fake = Faker(['en_IN', 'en_US', 'fr_FR','en_UK'])
+fake = Faker(['en_IN', 'en_US', 'fr_FR','en_UK','en_PA'])
 print(" ALL FAKER DETAILS ")
 print(dir(fake))
 
