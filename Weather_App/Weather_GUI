@@ -18,3 +18,24 @@ import time
     sunset = time.strftime('%I:%M:%S', time.gmtime(json_data['sys']['sunset'] - 21600))
 
     final_info = condition + "\n" + str(temp) + "°C" 
+    final_data = "\n" + "Min Temp: " + str(min_temp) + "˚C" + "\n" + "Max Temp: "+ str(max_temp) + "˚C" + "\n" + "Pressure: "+ str(pressure) +"\n" +"Humidity: "+ str(humidity) + "\n" + "Wind Speed: " +str(wind) + "\n" + "Sunrise: "+ sunrise + "\n" + "Sunset: "+ sunset
+    lable1.config(text = final_info) 
+    lable2.config(text = final_data)
+
+canvas = tk.TK()
+canvas.geometry("600*500")
+canvas.title("Weather App")
+f =("poppins",15,"bold")
+t = ( "poppins",35,"bold")
+textField = tk.Entry(canvas , justify ="center" , width =20 , font =t)
+textField.pack(pady =20)
+textField.focus()
+textField.bind("<Return>",get_weather)
+
+lable1 = tk .Lable(canvas , font =t)
+lable1.pack()
+lable2 = tk . Lable(canvas , font = f)
+lable3 .pack()
+canvas.mailloop()
+
+    
