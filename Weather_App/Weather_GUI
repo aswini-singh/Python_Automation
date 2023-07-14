@@ -1,8 +1,8 @@
-import tinkter as tk 
+import tkinter as tk 
 import requests 
 import time 
  
- def get_weather(canvas):
+def get_weather(canvas):
     city = textField.get()
     api = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=06c921750b9a82d8f5d1294e1586276f"
 
@@ -22,8 +22,8 @@ import time
     lable1.config(text = final_info) 
     lable2.config(text = final_data)
 
-canvas = tk.TK()
-canvas.geometry("600*500")
+canvas = tk.Tk()
+canvas.geometry("600x500")
 canvas.title("Weather App")
 f =("poppins",15,"bold")
 t = ( "poppins",35,"bold")
@@ -32,10 +32,10 @@ textField.pack(pady =20)
 textField.focus()
 textField.bind("<Return>",get_weather)
 
-lable1 = tk .Lable(canvas , font =t)
+lable1 = tk .Label(canvas , font =t)
 lable1.pack()
-lable2 = tk . Lable(canvas , font = f)
-lable3 .pack()
-canvas.mailloop()
+lable2 = tk . Label(canvas , font = f)
+lable2 .pack()
+canvas.mainloop()
 
     
