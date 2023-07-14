@@ -19,8 +19,8 @@ def get_weather(canvas):
 
     final_info = condition + "\n" + str(temp) + "°C" 
     final_data = "\n" + "Min Temp: " + str(min_temp) + "˚C" + "\n" + "Max Temp: "+ str(max_temp) + "˚C" + "\n" + "Pressure: "+ str(pressure) +"\n" +"Humidity: "+ str(humidity) + "\n" + "Wind Speed: " +str(wind) + "\n" + "Sunrise: "+ sunrise + "\n" + "Sunset: "+ sunset
-    lable1.config(text = final_info) 
-    lable2.config(text = final_data)
+    lable1.config(text = final_info, fg = "meganta" , bg = "blue") 
+    lable2.config(text = final_data , fg = "green" , bg ="black")
 
 canvas = tk.Tk()
 canvas.geometry("600x500")
@@ -36,6 +36,11 @@ lable1 = tk .Label(canvas , font =t)
 lable1.pack()
 lable2 = tk . Label(canvas , font = f)
 lable2 .pack()
+canvas.configure(bg = "lightgray")
 canvas.mainloop()
+
+
+
+
 
     
