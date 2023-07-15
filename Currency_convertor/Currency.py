@@ -23,5 +23,5 @@ if '__name__' == '__main__' :
     c = Currency_convertor(url)
     From_currency = input("FROM CURRENCY : ")
     To_currency = input("TO CURRENCY : ")
-    Amount = float(input("AMOUNT : "))
+    Amount = int(input("AMOUNT : "))
     c.Convertor(From_currency , To_currency , Amount)
