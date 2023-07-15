@@ -10,7 +10,6 @@
 # INR: Indian Rupee
 # MXN: Mexican Peso
 
-
 import tkinter as tk
 import requests
 import json
