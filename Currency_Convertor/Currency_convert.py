@@ -2,17 +2,18 @@ from locale import currency
 import requests
 import json
 
-currency_code = input("CURRENCY_CODE: ").lower()
+currency_code = input("From_Currency_Code: ").lower()
 cache = {}
 
 while True:
-    currency_exchange = input().lower()
+    currency_exchange = input("To_Currency_Code: ").lower()
 
     if currency_exchange == '':
         break
 
     try:
-        amount_to_exchange = int(input())
+        amount_to_exchange = int(input("Amount : "))
+
     except ValueError:
         print("Invalid input for amount. Please enter a valid number.")
         continue
