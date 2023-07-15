@@ -2,7 +2,7 @@ from locale import currency
 import requests
 import json
 
-currency_code = input().lower()
+currency_code = input("CURRENCY_CODE: ").lower()
 cache = {}
 
 while True:
