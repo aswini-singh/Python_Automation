@@ -11,12 +11,12 @@ class CurrencyConverter:
         input_frame = tk.Frame(self.root)
         input_frame.pack(padx=20, pady=10)
 
-        self.currency_code_label = tk.Label(input_frame, text="From-Currency-Code:")
-        self.currency_code_label.grid(row=0, column=0,padx=5, pady=5)
+        self.currency_code_label = tk.Label(input_frame, text="FromCurrencyCode:")
+        self.currency_code_label.grid(row=0,column=0,padx=5, pady=5)
         self.currency_code_entry = tk.Entry(input_frame)
         self.currency_code_entry.grid(row=0, column=1, padx=5, pady=5)
 
-        self.currency_exchange_label = tk.Label(input_frame, text="To-Currency-Code:")
+        self.currency_exchange_label = tk.Label(input_frame, text="ToCurrencyCode:")
         self.currency_exchange_label.grid(row=1, column=0, padx=5, pady=5)
         self.currency_exchange_entry = tk.Entry(input_frame)
         self.currency_exchange_entry.grid(row=1, column=1, padx=5, pady=5)
@@ -29,7 +29,7 @@ class CurrencyConverter:
         self.convert_button = tk.Button(self.root, text="Convert", command=self.convert_currency)
         self.convert_button.pack()
 
-        self.result_label = tk.Label(self.root, text="")
+        self.result_label = tk.Label(self.root,text="")
         self.result_label.pack()
 
     
@@ -57,7 +57,7 @@ class CurrencyConverter:
         print("Checking the cache...")
         if currency_exchange in self.cache:
             rate = round(amount_to_exchange * self.cache[currency_exchange], 2)
-            self.result_label.config(text=f"Hi! You received {rate} {currency_exchange.upper()}.", bg='pink',fg="green")
+            self.result_label.config(text=f"Hi! You received {rate} {currency_exchange.upper()}.",fg="green")
         else:
             self.cache[currency_exchange] = exch[currency_exchange]['rate']
             rate = round(amount_to_exchange * self.cache[currency_exchange], 2)
