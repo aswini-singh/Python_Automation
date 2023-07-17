@@ -6,7 +6,7 @@ num = random.randint(1,20)
 
 chances =0
 print("Guess a Number between 1 to 19")
-while chances < 5:
+while chances < 5:  # here taking 5 guessing chances, incase we have to take '3' ---> chances < 3
     guess = int(input("enter any number: "))
     if guess == num:
         print("congrats! you won")
