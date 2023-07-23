@@ -58,7 +58,7 @@ class CurrencyConverter:
             if currency_code == 'eur':
                 self.cache.update(inr=exch['inr']['rate'])
             else:
-                self.cache.update(inr=exch['inr']['rate'], eur=exch['eur']['rate'])
+                self.cache.update(inr=exch['eur']['rate'], eur=exch['eur']['rate'])
 
             print("Checking the cache...")
             if currency_exchange in self.cache:
