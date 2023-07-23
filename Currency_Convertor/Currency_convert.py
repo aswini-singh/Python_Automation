@@ -55,16 +55,16 @@ class CurrencyConverter:
 
         try:
             exch = response.json()
-
             if currency_code == 'eur':
-                self.cache.update(inr=exch['inr']['rate'], eur=1.0)  # Update the cache with EUR to INR rate
+                self.cache.update(inr=exch['inr']['rate'])
             else:
                 self.cache.update(inr=exch['inr']['rate'], eur=exch['eur']['rate'])
 
             print("Checking the cache...")
             if currency_exchange in self.cache:
-                rate = round(amount_to_exchange * (1.0 / self.cache[currency_exchange]), 2)  # Update the conversion formula
-                self.result_label.config(text=f"Hi! You will receive {rate} {currency_exchange.upper()}.", fg="green")
+                rate = round(amount_to_exchange * self.cache[currency_exchange], 2)
+                self.result_label.config(text=f"Hi! You will receive {rate} {currency_exchange.upper()}.",
+                                         fg="green")
             else:
                 if currency_exchange in exch:
                     self.cache[currency_exchange] = exch[currency_exchange]['rate']
@@ -76,3 +76,6 @@ class CurrencyConverter:
             self.result_label.config(text="Failed to process exchange rates. Please try again later.")
 
 
+root = tk.Tk()
+converter = CurrencyConverter(root)
+root.mainloop()
