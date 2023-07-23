@@ -46,6 +46,7 @@ class CurrencyConverter:
         except ValueError:
             self.result_label.config(text="Invalid input for amount. Please enter a valid number.")
             return
+        # Fetch exchange rates using the 'currency_code' as the base currency
 
         URL = f'http://www.floatrates.com/daily/{currency_code}.json'
         response = requests.get(URL)
@@ -55,23 +56,16 @@ class CurrencyConverter:
 
         try:
             exch = response.json()
-            if currency_code == 'eur':
-                self.cache.update(inr=exch['inr']['rate'])
-            else:
-                self.cache.update(inr=exch['eur']['rate'], eur=exch['eur']['rate'])
+            self.cache.update({cur.lower(): exch[cur.lower()]['rate'] for cur in exch})
 
             print("Checking the cache...")
             if currency_exchange in self.cache:
                 rate = round(amount_to_exchange * self.cache[currency_exchange], 2)
                 self.result_label.config(text=f"Hi! You will receive {rate} {currency_exchange.upper()}.",
                                          fg="green")
+            
             else:
-                if currency_exchange in exch:
-                    self.cache[currency_exchange] = exch[currency_exchange]['rate']
-                    rate = round(amount_to_exchange * self.cache[currency_exchange], 2)
-                    self.result_label.config(text=f"You will receive {rate} {currency_exchange.upper()}.", fg="red")
-                else:
-                    self.result_label.config(text="Invalid currency code. Please enter a valid currency code.")
+                self.result_label.config(text="Invalid currency code. Please enter a valid currency code.")
         except (json.JSONDecodeError, KeyError):
             self.result_label.config(text="Failed to process exchange rates. Please try again later.")
 
