@@ -1,8 +1,6 @@
 import tkinter as tk
 import requests
 import json
-
-
 class CurrencyConverter:
     def __init__(self, root):
         self.root = root
@@ -28,12 +26,8 @@ class CurrencyConverter:
         self.amount_entry = tk.Entry(input_frame)
         self.amount_entry.grid(row=2, column=1, padx=8, pady=8)
 
-      
-
         self.convert_button = tk.Button(input_frame, text="Convert", command=self.convert_currency)
         self.convert_button.grid(row=3, column=0, columnspan=2, pady=10)
-
-
 
         # Create a font with desired size and bold style
         self.result_label = tk.Label(self.root, text="", font=("Helvetica", 22, "bold"))  # Apply the font to the label
@@ -85,7 +79,6 @@ class CurrencyConverter:
                 self.result_label.config(text="Invalid currency code. Please enter a valid currency code.")
         except (json.JSONDecodeError, KeyError):
             self.result_label.config(text="Failed to process exchange rates. Please try again later.")
-
 
 root = tk.Tk()
 converter = CurrencyConverter(root)
