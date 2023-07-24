@@ -24,15 +24,32 @@ class CurrencyConverter:
         self.currency_exchange_entry.grid(row=1, column=1, padx=5, pady=5)
 
         self.amount_label = tk.Label(input_frame, text="Amount:")
-        self.amount_label.grid(row=2, column=0, padx=5, pady=5)
+        self.amount_label.grid(row=2, column=0, padx=8, pady=8)
         self.amount_entry = tk.Entry(input_frame)
-        self.amount_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.amount_entry.grid(row=2, column=1, padx=8, pady=8)
 
-        self.convert_button = tk.Button(self.root, text="Convert", command=self.convert_currency)
-        self.convert_button.pack()
+      
 
-        self.result_label = tk.Label(self.root, text="")
+        self.convert_button = tk.Button(input_frame, text="Convert", command=self.convert_currency)
+        self.convert_button.grid(row=3, column=0, columnspan=2, pady=10)
+
+
+
+        # Create a font with desired size and bold style
+        self.result_label = tk.Label(self.root, text="", font=("Helvetica", 22, "bold"))  # Apply the font to the label
         self.result_label.pack()
+
+    def center_window(self, win, width, height):
+        # Get the screen width and height
+        screen_width = win.winfo_screenwidth()
+        screen_height = win.winfo_screenheight()
+
+        # Calculate the x and y coordinates to center the window
+        x = (screen_width - width) // 2
+        y = (screen_height - height) // 2
+
+        # Set the window's position
+        win.geometry(f"{width}x{height}+{x}+{y}")
 
     def convert_currency(self):
         currency_code = self.currency_code_entry.get().lower()
@@ -72,4 +89,5 @@ class CurrencyConverter:
 
 root = tk.Tk()
 converter = CurrencyConverter(root)
+converter.center_window(root, 400, 250)  # Set the width and height for the main window
 root.mainloop()
