@@ -53,7 +53,7 @@ class CurrencyConverter:
             return
 
         try:
-            amount_to_exchange = int(self.amount_entry.get())
+            amount_to_exchange = float(self.amount_entry.get())
         except ValueError:
             self.result_label.config(text="Invalid input for amount. Please enter a valid number.")
             return
