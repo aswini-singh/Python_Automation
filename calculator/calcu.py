@@ -1,17 +1,30 @@
 import tkinter as tk
+import math
+
+def calculate_expression(expression):
+    try:
+        return str(eval(expression))
+    except Exception as e:
+        return "Error"
 
 def on_button_click(event):
     button_text = event.widget.cget("text")
+    current_text = entry.get()
+
     if button_text == "=":
-        try:
-            result = eval(entry.get())
-            entry.delete(0, tk.END)
-            entry.insert(tk.END, str(result))
-        except Exception as e:
-            entry.delete(0, tk.END)
-            entry.insert(tk.END, "Error")
+        result = calculate_expression(current_text)
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, result)
     elif button_text == "C":
         entry.delete(0, tk.END)
+    elif button_text == "sqrt":
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, str(math.sqrt(float(current_text))))
+    elif button_text == "%":
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, str(float(current_text) / 100))
+    elif button_text == "^":
+        entry.insert(tk.END, "**")
     else:
         entry.insert(tk.END, button_text)
 
@@ -30,6 +43,7 @@ buttons = [
     ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("-", 3, 3),
     ("0", 4, 0), (".", 4, 1), ("=", 4, 2), ("+", 4, 3),
     ("C", 5, 0),
+    ("^", 5, 1), ("sqrt", 5, 2), ("%", 5, 3),  # New operations
 ]
 
 for (text, row, col) in buttons:
