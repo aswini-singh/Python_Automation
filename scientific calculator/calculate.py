@@ -1,6 +1,5 @@
 import tkinter as tk
 import math
-import tkinter.simpledialog
 
 
 def on_button_click(event):
