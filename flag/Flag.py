@@ -22,7 +22,7 @@ center_y = (white_box_coords[1] + white_box_coords[3]) / 2
 
 wheel_radius = 30
 spoke_length = wheel_radius - 5  
-wheel_color = "gray"
+wheel_color = "white"
 wheel_border_color = "black"
 
 canvas.create_oval(center_x - wheel_radius, center_y - wheel_radius,
@@ -49,5 +49,7 @@ title_label.place(x=250, y=10)
 
 subtitle_label = tk.Label(root, text="Hind", font=("Arial", 30, "bold"), fg="green")
 subtitle_label.place(x=300, y=10)
+
+
 # Start the Tkinter event loop
 root.mainloop()
